@@ -25,7 +25,7 @@
 
 .main_container {
     margin: 0;
-    width: 75%;
+    width: 90%;
     display: block;
     margin: auto;
     border-radius: 4px;
@@ -50,6 +50,10 @@ body {
 
 }
 
+.block_area {
+    padding-top: 20px;
+}
+
 .container {
 
     width: 100%;
@@ -61,9 +65,15 @@ body {
     margin: auto;
 }
 
+.block_title {
+    font-size: 45px;
+    margin: 0 0 40px 0;
+    text-align: center;
+}
+
 .slide {
     position: relative;
-    height: 50vh;
+    height: 70vh;
     border-radius: 20px;
     margin: 10px;
     cursor: pointer;
@@ -72,27 +82,32 @@ body {
     background-position: top;
     background-repeat: no-repeat;
     transition: all 500ms ease-in-out;
+    overflow: hidden;
 
 
 }
 
-.slide h3 {
+.slide .person_info {
     position: absolute;
-    font-size: 24px;
-    bottom: 20px;
-    left: 20px;
+    padding: 20px;
+    border-radius: 0px 0px 20px 20px;
+    width: 100%;
+    bottom: -500px;
     margin: 0;
     opacity: 0;
-    transition: opacity .3s ease-in .2s;
+    background-color: #0000008e;
+
+    transition: opacity .5s ease-in .4s;
 }
 
 .slide.active {
-    flex: 10;
-    box-shadow: 0 0 15px rgb(224, 123, 7);
+    flex: 3;
+    box-shadow: 0 0 15px rgb(146, 0, 0);
 }
 
-.slide.active h3 {
+.slide.active .person_info {
     opacity: 1;
+    bottom: 0;
     transition: opacity .3s ease-in .4s;
 }
 
@@ -102,20 +117,21 @@ body {
 
 .header_arrow {
     position: absolute;
-
     bottom: 50px;
-
     padding: 10px;
+    border-radius: 50%;
     left: 50%;
     display: flex;
     justify-content: center;
     filter: invert(100%);
     animation: arrow_anim 4s linear infinite;
+    transition: 0.3s;
+
 }
 
 .header_arrow:hover {
     border: 1px solid #000;
-    border-radius: 50%;
+
     transition: 0.3s;
 }
 
@@ -153,7 +169,7 @@ body {
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 65vh;
+    height: 80vh;
 }
 
 .sidebar {
@@ -173,11 +189,13 @@ body {
     align-items: center;
     justify-content: center;
     color: #fff;
+    padding: 100px;
+    text-align: justify;
 }
 
 .sidebar h1 {
     font-size: 40px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     margin-top: -30px;
 }
 
