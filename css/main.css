@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+
+}
+
+.header {
+    width: 100%;
+    height: 100vh;
+    background-image: url('https://avatars.mds.yandex.net/i?id=d8615f94e582baaa6b59b5cf4e83011f_l-4877016-images-thumbs&n=13');
+    position: relative;
+}
+
+.header_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+
+}
+
+.main_container {
+    margin: 0;
+    width: 75%;
+    display: block;
+    margin: auto;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+h1 {
+    display: block;
+    text-align: center;
+}
+
+body {
+    font-family: 'Prompt', sans-serif;
+
+    margin: 0;
+    color: black;
+    background: url('/img/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    height: 100vh;
+
+}
+
+.container {
+    
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    margin: auto;
+}
+
+.slide {
+    position: relative;
+    height: 50vh;
+    border-radius: 20px;
+    margin: 10px;
+    cursor: pointer;
+    flex: 1;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    transition: all 500ms ease-in-out;
+
+
+}
+
+.slide h3 {
+    position: absolute;
+    font-size: 24px;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    opacity: 0;
+    transition: opacity .3s ease-in .2s;
+}
+
+.slide.active {
+    flex: 10;
+    box-shadow: 0 0 15px rgb(224, 123, 7);
+}
+
+.slide.active h3 {
+    opacity: 1;
+    transition: opacity .3s ease-in .4s;
+}
+
+.card_info {
+    color: black;
+}
+
+.header_arrow {
+    position: absolute;
+
+    bottom: 50px;
+
+    padding: 10px;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    filter: invert(100%);
+    animation: arrow_anim 4s linear infinite;
+}
+
+.header_arrow:hover {
+    border: 1px solid #000;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+@keyframes arrow_anim {
+    from {
+        transform: translate(0, 10px);
+    }
+
+    50% {
+        transform: translate(0, -10px);
+    }
+
+    to {
+        transform: translate(0, 10px);
+    }
+}
+
+
+
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+}
+
+.slider_container {
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 65vh;
+}
+
+.sidebar {
+    height: 100%;
+    width: 65%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.sidebar>div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.sidebar h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    margin-top: -30px;
+}
+
+.main-slide {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 65%;
+    width: 35%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.main-slide>div {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    height: 100%;
+    width: 100%;
+}
+
+button {
+    background-color: #fff;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 15px;
+}
+
+button:hover {
+    color: #222;
+}
+
+button:focus {
+    outline: none;
+}
+
+.slider_container .controls button {
+    position: absolute;
+    left: 65%;
+    top: 50%;
+    z-index: 100;
+}
+
+.slider_container .controls .down-button {
+    transform: translateX(-100%);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.slider_container .controls .up-button {
+    transform: translateY(-100%);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
