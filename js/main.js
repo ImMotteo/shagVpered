@@ -16,7 +16,16 @@ for (const slide of slides) {
 function clearActiveClases() {
     slides.forEach((slide) => {
         slide.classList.remove('active');
-    } )
+    })
+}
+
+function slowScroll(place) {
+
+
+    document.querySelector(place).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
 }
 
 const upBtn = document.querySelector('.up-button');
@@ -31,13 +40,13 @@ const slidesCount = mainSlide.querySelectorAll('div').length;
 
 let activeSlideIndex = 0;
 
-sideBar.style.top = `-${(slidesCount - 1) * 65}vh`;
+sideBar.style.top = `-${(slidesCount - 1) * 80}vh`;
 
-upBtn.addEventListener('click', ()=> {
+upBtn.addEventListener('click', () => {
     changeSlide('up');
 })
 
-downBtn.addEventListener('click', ()=> {
+downBtn.addEventListener('click', () => {
     changeSlide('down')
 })
 
@@ -45,10 +54,10 @@ downBtn.addEventListener('click', ()=> {
 function changeSlide(direction) {
     if (direction === 'up') {
         activeSlideIndex++
-            if (activeSlideIndex === slidesCount) {
-                activeSlideIndex = 0;
-            };
-        } else if (direction === 'down') {
+        if (activeSlideIndex === slidesCount) {
+            activeSlideIndex = 0;
+        };
+    } else if (direction === 'down') {
         activeSlideIndex--
         if (activeSlideIndex < 0) {
             activeSlideIndex = slidesCount - 1;
@@ -56,7 +65,7 @@ function changeSlide(direction) {
     }
 
     const height = container.clientHeight;
-    
+
     mainSlide.style.transform = `translateY(-${activeSlideIndex * height}px)`;
 
     sideBar.style.transform = `translateY(${activeSlideIndex * height}px)`;
