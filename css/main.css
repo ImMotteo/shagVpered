@@ -62,13 +62,15 @@ body {
 
     margin: 0;
     color: black;
-    background: url('../img/background_2.png');
+    background: url('../img/background_5.png');
     background-size: 35%;
     background-position: center;
     background-repeat: repeat;
     height: 100vh;
 
 }
+
+
 
 .block_area {
     padding-top: 20px;
@@ -163,6 +165,37 @@ body {
     transition: 0.3s;
 }
 
+.body_arrow {
+    font-size: 34px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 0 30px;
+}
+
+.body_arrow span {
+    width: fit-content;
+    margin: auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    animation: arrow_anim 4s linear infinite;
+    border: 1px solid #00000000;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.body_arrow span:hover {
+
+    border: 1px solid #000;
+
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+
 @keyframes arrow_anim {
     from {
         transform: translate(0, 10px);
@@ -217,7 +250,7 @@ body {
     align-items: center;
     justify-content: center;
     color: #fff;
-    padding: 100px;
+    padding: 100px 100px 100px 80px;
     text-align: justify;
 }
 
