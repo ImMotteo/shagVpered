@@ -70,6 +70,47 @@ body {
 
 }
 
+.your_mom {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.your_mom::after {
+    color: white;
+    position: absolute;
+    top: calc(50% - 0.07em);
+    left: 0;
+    width: 100%;
+    content: '';
+    display: block;
+    border-top: 0.1em solid currentColor;
+    transform: translateX(-100%);
+    transition: transform 1s ease-in-out;
+}
+
+.client {
+    overflow: hidden;
+    width: 0px;
+    margin: auto;
+    transition: opacity 3s linear;
+}
+
+.not_your_mom::after {
+    transform: translateX(0);
+}
+
+.not_your_mom {
+    color: #ff122b;
+    transition: color 1s linear;
+
+}
+
+.show_this {
+    width: 100%;
+    transition: width 2.5s linear;
+}
 
 
 .block_area {

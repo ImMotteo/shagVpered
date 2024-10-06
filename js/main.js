@@ -1,5 +1,12 @@
 const slides = document.querySelectorAll('.slide');
 
+function notYourMom() {
+    document.querySelector('.your_mom').classList.add('not_your_mom')
+    setTimeout(() => { document.querySelector('.client').classList.add('show_this') }, 500)
+
+}
+
+
 for (const slide of slides) {
     slide.addEventListener('click', () => {
 
