@@ -75,12 +75,14 @@ body {
     position: relative;
     overflow: hidden;
     color: white;
+    margin-top: 7px;
+
 }
 
 .your_mom::after {
     color: white;
     position: absolute;
-    top: calc(50% - 0.07em);
+    top: calc(50% + 0.05em);
     left: 0;
     width: 100%;
     content: '';
@@ -90,10 +92,12 @@ body {
     transition: transform 1s ease-in-out;
 }
 
-.client {
-    overflow: hidden;
-    width: 0px;
-    margin: auto;
+.client,
+.how_we,
+.your_mom,
+.meet,
+.quote {
+    opacity: 0;
     transition: opacity 3s linear;
 }
 
@@ -103,13 +107,13 @@ body {
 
 .not_your_mom {
     color: #ff122b;
-    transition: color 1s linear;
+    transition: color 1s ease-in-out;
 
 }
 
 .show_this {
-    width: 100%;
-    transition: width 2.5s linear;
+    opacity: 1;
+    transition: opacity 1.5s linear, color 1s ease-in-out;
 }
 
 

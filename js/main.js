@@ -1,8 +1,12 @@
 const slides = document.querySelectorAll('.slide');
 
 function notYourMom() {
-    document.querySelector('.your_mom').classList.add('not_your_mom')
-    setTimeout(() => { document.querySelector('.client').classList.add('show_this') }, 500)
+    setTimeout(() => { document.querySelector('.how_we').classList.add('show_this') }, 200)
+    setTimeout(() => { document.querySelector('.meet').classList.add('show_this') }, 500)
+    setTimeout(() => { document.querySelector('.your_mom').classList.add('show_this') }, 800)
+    setTimeout(() => { document.querySelector('.your_mom').classList.add('not_your_mom') }, 1500)
+    setTimeout(() => { document.querySelector('.client').classList.add('show_this') }, 2300)
+    setTimeout(() => { document.querySelector('.quote').classList.add('show_this') }, 2500)
 
 }
 
