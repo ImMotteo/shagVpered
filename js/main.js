@@ -6,7 +6,7 @@ function notYourMom() {
     setTimeout(() => { document.querySelector('.your_mom').classList.add('show_this') }, 800)
     setTimeout(() => { document.querySelector('.your_mom').classList.add('not_your_mom') }, 1500)
     setTimeout(() => { document.querySelector('.client').classList.add('show_this') }, 2300)
-    setTimeout(() => { document.querySelector('.quote').classList.add('show_this') }, 2500)
+    setTimeout(() => { document.querySelector('.quote').classList.add('show_this') }, 2800)
 
 }
 
