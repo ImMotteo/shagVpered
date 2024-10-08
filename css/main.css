@@ -72,7 +72,7 @@ h1 {
 }
 
 .sidebar div i {
-    font-size: .8vw;
+    font-size: .87vw;
 }
 
 .sidebar div h1 {
@@ -492,4 +492,18 @@ button:focus {
 
 .tabs-box input[type="checkbox"]:checked~i.fa-chevron-circle-down {
     transform: rotate(180deg);
+}
+
+@media (max-width: 1250px) {
+    .sidebar div i {
+        font-size: 1.06vw;
+    }
+
+    .sidebar div h1 {
+        font-size: 2vw;
+    }
+
+    .sidebar h1 {
+        margin-bottom: 10px;
+    }
 }
