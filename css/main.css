@@ -72,8 +72,13 @@ h1 {
 }
 
 .sidebar div i {
-    font-size: 1.7vh;
+    font-size: .8vw;
 }
+
+.sidebar div h1 {
+    font-size: 1.8vw;
+}
+
 
 
 
