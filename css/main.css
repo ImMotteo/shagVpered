@@ -30,6 +30,32 @@ body {
     position: relative;
 }
 
+.header_navbar {
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.header_navbar li {
+    text-decoration: none;
+    color: white;
+    transition: .5s;
+    border-bottom: 0px solid #ff122b;
+    cursor: pointer;
+}
+
+.header_navbar li:hover {
+    border-bottom: 1px solid #ff122b;
+    transition: .5s;
+}
+
+.header_navbar li {
+    list-style-type: none;
+}
+
 .header_text__container {
     text-align: center;
     width: fit-content;
@@ -268,8 +294,35 @@ h1 {
     }
 }
 
+.books {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
 
+.book_card {
+    display: flex;
+    width: 30%;
+    height: 350px;
+    margin: 25px;
+    border-radius: 4px;
+}
 
+.book_text {
+    color: white;
+    font-size: 12px;
+    background-color: rgba(0, 0, 0, .5);
+    padding: 10px;
+    padding-bottom: 0;
+}
+
+.book_img {
+    width: 80%;
+}
 
 
 * {
