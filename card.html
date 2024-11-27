@@ -422,9 +422,10 @@
                     <div class="card_item">
                         Тип обращения
                         <div class="tip_area">
-                            <button class="tip_button tip_galoba">Жалоба</button>
-                            <button class="tip_button tip_zayavka">Заявка</button>
-                            <button class="tip_button tip_konsultaciya">Консультация</button>
+                            <button class="tip_button tip_galoba" onclick="chioseTypeSz(this)">Жалоба</button>
+                            <button class="tip_button tip_zayavka" onclick="chioseTypeSz(this)">Заявка</button>
+                            <button class="tip_button tip_konsultaciya"
+                                onclick="chioseTypeSz(this)">Консультация</button>
                         </div><br>
                     </div>
 
@@ -527,6 +528,8 @@
         let start;
         let end;
         let typeSz = '';
+        let theme = '';
+        let descriptionText = ''
 
         function hideThis(selector) {
             document.querySelector(selector).classList.add('hideThis')
@@ -553,7 +556,13 @@
 
         document.querySelector('#perevesti').onclick = function () {
             end = Date.now();
-            alert(`Время перевода: ${(end - start) / 1000}`)
+            alert(`Время перевода: ${(end - start) / 1000}\n
+            Тема обращения: ${theme}\n
+            Тип обращения: ${typeSz}\n
+            Описание: ${descriptionText}
+            `)
+
+
         }
 
         let themes = [
@@ -640,6 +649,14 @@
             document.querySelector('.napravlenie_container').innerHTML = newNapravlenieList;
 
 
+        }
+
+        function chioseTypeSz(type) {
+            document.querySelectorAll('.tip_button').forEach((button) => {
+                button.style.opacity = .5;
+            })
+            type.style.opacity = 1;
+            typeSz = type.textContent
         }
 
 
