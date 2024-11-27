@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Макет карточки переводного звонка</title>
+</head>
+
+<style>
+    :root {
+        --min-font-height: 1vw;
+    }
+
+    * {
+        box-sizing: border-box;
+        font-family: "Montserrat Alternates", sans-serif;
+        margin: 0;
+        padding: 0;
+
+    }
+
+    .main {
+        width: 100%;
+        height: 88vh;
+        display: flex;
+    }
+
+    aside {
+        width: 20%;
+        font-size: 14px;
+        border-right: 1px solid silver;
+        height: 100%;
+        background-color: #f7f7f7;
+        position: relative;
+    }
+
+    aside h1 {
+        text-align: center;
+        padding: 10px 20px;
+        background-color: #2b2d88;
+        color: white;
+        font-size: calc(var(--min-font-height) * .8);
+    }
+
+    .aside_item {
+        margin: 15px;
+
+
+    }
+
+    .item_span {
+        border: 1px solid silver;
+        padding: 5px;
+        background-color: white;
+    }
+
+    .balance {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0c17b;
+        color: #232574;
+        padding: 10px 0;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .header {
+        height: 12vh;
+    }
+
+    nav {
+        width: 100%;
+        border: 1px solid silver;
+        height: max-content;
+        background-color: #f7f7f7;
+    }
+
+    nav ul {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        list-style: none;
+        height: 50px;
+        vertical-align: center;
+
+    }
+
+    nav li {
+        display: flex;
+        align-items: center;
+        margin-right: 5px;
+        height: 100%;
+        padding: 10px;
+        cursor: pointer;
+        transition: .3s;
+
+    }
+
+    nav li:hover {
+        background-color: #232574;
+        color: white;
+        border-radius: 4px 4px 0 0;
+        transition: .3s;
+    }
+
+    .active {
+        background-color: #232574;
+        color: white;
+        border-radius: 4px 4px 0 0;
+    }
+
+    .main_container {
+        width: 100%;
+    }
+
+    .info_area {
+        width: 100%;
+        display: flex;
+        padding: 10px;
+    }
+
+    .info_area_item {
+        width: 50%;
+    }
+
+    .card_area {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 10000;
+    }
+
+    .card {
+        background-color: white;
+        width: 500px;
+        height: auto;
+        border: 1px solid silver;
+        border-radius: 4px;
+    }
+
+    .card h3 {
+        width: 100%;
+        text-align: center;
+
+        color: white;
+
+    }
+
+    .card_container {
+        width: 90%;
+        height: 100%;
+        display: block;
+        margin: auto;
+    }
+
+    .card_item {
+        width: 100%;
+        margin: 25px 0;
+        position: relative;
+    }
+
+    .card_item input {
+        width: 100%;
+        padding: 10px;
+        font-weight: 500;
+        padding: 5px;
+    }
+
+    .card_header {
+        position: relative;
+        padding: 15px;
+        background-color: #232574;
+
+    }
+
+    .close_card {
+        position: absolute;
+        top: 5px;
+        right: 15px;
+        color: white;
+        font-weight: 500;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+    .close_card:hover {
+        transition: .3s;
+        color: #f0c17b;
+    }
+
+    .card_footer {
+        display: flex;
+        padding: 15px 0;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    button {
+        border-radius: 4px;
+    }
+
+    .button {
+        padding: 15px;
+        background-color: #232574;
+        font-weight: 500;
+        color: white;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+
+    .button:hover {
+        background-color: #f0c17b;
+        color: #232574;
+        transition: .3s;
+    }
+
+    .aside_footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+    }
+
+    #perevod_button {
+        border-radius: 0;
+    }
+
+    .hideThis {
+        display: none;
+    }
+
+    .aside_footer .button {
+        width: 100%;
+    }
+
+    .header {
+        width: 100%;
+    }
+
+    .header_logo_area {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 30px;
+        box-shadow: rgba(0, 0, 0, 0.5) 0 -2px 10px 0;
+    }
+
+    .logo_leftPart {
+        width: 15%;
+
+    }
+
+    .headerPart {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+        background-image: url('https://habrastorage.org/getpro/moikrug/uploads/company/355/898/672/logo/b8623ca7ce06fcc39ac26ccb7c2bafcb.png');
+        background-size: cover;
+    }
+
+    .burger {
+        width: 24px;
+        height: 24px;
+        background-image: url('img/hamburger.png');
+        background-size: cover;
+    }
+
+    .home {
+        width: 24px;
+        height: 24px;
+        background-image: url('img/home.png');
+        background-size: cover;
+    }
+
+    .input_container {
+        width: 100%;
+        position: absolute;
+        bottom: 1;
+        height: fit-content;
+        max-height: 20vh;
+        box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px 0;
+        overflow: auto;
+        z-index: 1000000;
+        background-color: white;
+    }
+
+    .input_container_item {
+        width: 100%;
+        padding: 10px 10px;
+        cursor: pointer;
+    }
+
+    .input_container_item:hover {
+        background-color: #232574;
+        color: white;
+    }
+
+    .description {
+        font-weight: 600;
+    }
+
+    .card_area textarea {
+        width: 100%;
+    }
+
+    .tip_button {
+        padding: 5px 10px;
+        border: none;
+        font-weight: 500;
+        font-size: 14px;
+        cursor: pointer;
+        opacity: .8;
+        transition: .3s;
+    }
+
+    .tip_button:hover {
+        opacity: 1;
+        transition: .3s;
+    }
+
+    .tip_galoba {
+        background-color: #ee5c5c;
+
+    }
+
+    .tip_zayavka {
+        background-color: #f0c17b;
+
+    }
+
+    .tip_konsultaciya {
+        background-color: #7ce79c;
+    }
+
+    #otmena {
+        opacity: .6;
+    }
+
+    #otmena:hover {
+        opacity: 1;
+    }
+
+    .card_input {
+        margin-top: 7px;
+    }
+
+    textarea {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .header_button_area {
+        height: 50%;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .buttonPart {
+        font-size: 12px;
+        display: flex;
+        padding: 10px;
+        background-color: #f7f7f7;
+        justify-content: space-between;
+        width: 40%;
+        margin: 5px 10px;
+        border-radius: 7px;
+    }
+
+    .buttonPart div {}
+</style>
+
+<body>
+
+    <div class="card_area hideThis">
+        <div class="card">
+            <div class="card_header">
+                <h3>Перевод вызова</h3>
+                <span class="close_card">X</span>
+            </div>
+
+            <hr>
+            <div class="card_container">
+                <div class="card_items">
+                    <div class="card_item">
+                        Тема обращения <input class="card_input"
+                            placeholder="Начни вводить или выбери тему из списка"><br>
+                        <div class="input_container themes_container hideThis">
+                        </div>
+                    </div>
+                    <div class="description">
+                        Кто обслуживает: <span class="zona_otv">МБ</span>
+                    </div>
+                    <div class="card_item">
+                        Направление перевода:
+                        <input class="card_input" placeholder="Начни вводить или выбери направление перевода"
+                            required><br>
+                        <div class="input_container napravlenie_container hideThis">
+                        </div>
+                    </div>
+                    <div class="card_item">
+                        <p>Как обращаться к клиенту <input placeholder="ФИО клиента" value="Имя Фамилия Отчество"
+                                required><br>
+                    </div>
+                    <div class="card_item">
+                        Тип обращения
+                        <div class="tip_area">
+                            <button class="tip_button tip_galoba">Жалоба</button>
+                            <button class="tip_button tip_zayavka">Заявка</button>
+                            <button class="tip_button tip_konsultaciya">Консультация</button>
+                        </div><br>
+                    </div>
+
+                    <div class="card_item">
+                        Подробнее <br><textarea name="podrobnee" rows="10" cols="15"
+                            placeholder="Подробнее опиши ситуацию, чтобы помочь своему коллеге лучше понять причину обращения"></textarea>
+                    </div>
+
+                    <div class="card_footer">
+                        <button class="button" id="otmena" type="submit">Отмена</button>
+                        <button class="button" id="perevesti" type="submit">Перевести</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="header">
+        <div class="header_logo_area">
+            <div class="logo_leftPart headerPart">
+                <div class="logo"></div>
+                <div class="burger"></div>
+                <div class="home"></div>
+            </div>
+            <div class="logo_rightPart headerPart"><img src=""></div>
+        </div>
+        <div class="header_button_area">
+            <div class="botton_leftPart buttonPart">
+                <div>Поиск</div>
+                <div>Юр.Лица</div>
+                <div>Физ.Лица</div>
+                <div>Марти</div>
+                <div>СУЗ</div>
+                <div>Сохранение</div>
+            </div>
+            <div class="botton_leftPart buttonPart">
+                <div>Поиск</div>
+                <div>Юр.Лица</div>
+                <div>Физ.Лица</div>
+                <div>Марти</div>
+                <div>СУЗ</div>
+                <div>Сохранение</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <aside>
+            <h1>Имя Фамилия Отчество</h1>
+            <div class="balance">
+                <p>Баланс: 00,00 руб.</p>
+            </div>
+            <div class="aside_item">
+                <p>Номер телефона: <span class="item_span">+7000000000</span></p>
+            </div>
+            <div class="aside_item">
+                <p>Дата подключения: <span class="item_span">01.01.1900</span></p>
+            </div>
+
+            <div class="aside_footer">
+                <button class="button" id="perevod_button">Перевети вызов</button>
+            </div>
+        </aside>
+
+        <div class="main_container">
+            <nav>
+                <ul>
+                    <li class="active">Общая</li>
+                    <li>Детализация</li>
+                    <li>Платежи</li>
+                    <li>Услуги</li>
+                    <li>Переадресация</li>
+                    <li>Диагностика</li>
+                    <li>Коммуникации</li>
+                    <li>МТС Деньги</li>
+                    <li>И другие кнопки</li>
+            </nav>
+
+            <div class="info_area">
+                <div class="info_area_left info_area_item">Информация о балансе, минутам, ОП</div>
+                <div class="info_area_rgiht info_area_item">Информация о тарифке, платных услугах</div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    </div>
+
+    <div class="footer">
+
+    </div>
+
+    <script>
+        let start;
+        let end;
+        let typeSz = '';
+
+        function hideThis(selector) {
+            document.querySelector(selector).classList.add('hideThis')
+        }
+
+        function showThis(selector) {
+            document.querySelector(selector).classList.remove('hideThis')
+        }
+
+        document.getElementById('perevod_button').onclick = function () {
+            showThis('.card_area')
+            start = Date.now();
+        }
+
+        document.getElementById('otmena').onclick = function () {
+            hideThis('.card_area')
+            start = 0;
+        }
+
+        document.querySelector('.close_card').onclick = function () {
+            hideThis('.card_area')
+            start = 0;
+        }
+
+        document.querySelector('#perevesti').onclick = function () {
+            end = Date.now();
+            alert(`Время перевода: ${(end - start) / 1000}`)
+        }
+
+        let themes = [
+            {
+                name: 'МТС Деньги',
+                description: 'МБ или выделенный сотрудник ФБ',
+                tags: ['Деньги'],
+                napravlenie: ['МБ', 'ФБ']
+
+            },
+            {
+                name: 'Диагностика домашних услуг',
+                description: 'ФБ или выделенный сотрудник МБ',
+                tags: ['Диагностика', 'ШПД', 'Домашних услуг', 'Диагностика ТВ', 'ЦТВ', 'IPTV', 'Не работает', 'Не показывает', 'wifi', 'wi-fi', 'вай-фай', 'вайфай'],
+                napravlenie: ['МБ', 'ФБ']
+
+            },
+            {
+                name: 'Кэшбэк',
+                description: 'МБ или выделенный сотрудник ФБ',
+                tags: ['кэшбэк', 'Кешбек', 'кешбэк', 'кэшбек', 'cashback'],
+                napravlenie: ['МБ', 'ФБ']
+
+            },
+            {
+                name: 'Подключить тариф МБ+ФБ',
+                description: 'ФБ или выделенный сотрудник МБ',
+                tags: ['Конвергент', 'МБ+ФБ', 'МБ, ФБ', 'ФБ', 'фикс'],
+                napravlenie: ['ФБ']
+            },
+            {
+                name: 'Подключить СТВ',
+                description: 'СТВ',
+                tags: ['Спутник', 'Спутниковое', 'СТВ'],
+                napravlenie: ['СТВ']
+            },
+        ]
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let themesContainer = document.querySelector('.themes_container')
+            let newThemesList = ''
+            themes.forEach(theme => {
+                newThemesList += `<div class="input_container_item" onclick='inputItemChoise(this)' data-description='${theme.description}' data-napravlenie='${theme.napravlenie}' data-tags='${theme.tags}'>${theme.name}</div>`
+            });
+
+            document.querySelector('.themes_container').innerHTML = newThemesList;
+
+        });
+
+
+        let inputForms = document.querySelectorAll(".card_input");
+        for (var i = 0; i < inputForms.length; i++) {
+            inputForms[i].onclick = function () {
+                this.closest('.card_item').querySelector(".input_container").classList.remove('hideThis')
+            };
+
+            inputForms[i].oninput = function () {
+                let inputValue = this.value.toLowerCase()
+                this.closest('.card_item').querySelectorAll('.input_container_item').forEach((item) => {
+                    if ((item.textContent).toLowerCase().includes(inputValue) || item.getAttribute('data-tags').toLocaleLowerCase().includes(inputValue)) {
+                        item.classList.remove('hideThis')
+                    } else {
+                        item.classList.add('hideThis')
+                    }
+                })
+
+            };
+        }
+
+
+        function inputItemChoise(item) {
+            item.closest('.card_item').querySelector(".card_input").value = item.textContent
+            item.closest('.card_item').querySelector(".input_container").classList.add('hideThis')
+            item.closest('.card').querySelector(".zona_otv").innerHTML = item.getAttribute('data-description')
+
+            let napravlenieContainer = document.querySelector('.napravlenie_container')
+            let newNapravlenieArray = item.getAttribute('data-napravlenie').split(',')
+            let newNapravlenieList = ''
+            console.log(newNapravlenieArray)
+            newNapravlenieArray.forEach(napravlenie => {
+                newNapravlenieList += `<div class="input_container_item" onclick='inputItemChoise(this)'>${napravlenie}</div>`
+            });
+
+            document.querySelector('.napravlenie_container').innerHTML = newNapravlenieList;
+
+
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
