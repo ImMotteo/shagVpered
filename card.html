@@ -319,7 +319,8 @@
         width: 100%;
     }
 
-    .tip_button {
+    .tip_button,
+    .ident_button {
         padding: 5px 10px;
         border: none;
         font-weight: 500;
@@ -327,12 +328,18 @@
         cursor: pointer;
         opacity: .8;
         transition: .3s;
+        margin-bottom: 5px;
+    }
+
+    .ident_button__active {
+        opacity: 1;
     }
 
     .tip_button:hover {
         opacity: 1;
         transition: .3s;
     }
+
 
     .tip_galoba {
         background-color: #ee5c5c;
@@ -419,6 +426,20 @@
                         <p>Как обращаться к клиенту <input placeholder="ФИО клиента" value="Имя Фамилия Отчество"
                                 required><br>
                     </div>
+
+                    <div class="card_item">
+                        <p>Что называл клиент?
+                        <div class="ident_area">
+                            <button class="ident_button ident_fio" onclick="chioseIdent(this)">ФИО</button>
+                            <button class="ident_button ident_pasport" onclick="chioseIdent(this)">Паспортные
+                                данные</button>
+                            <button class="ident_button ident_adres" onclick="chioseIdent(this)">Адрес</button>
+                            <button class="ident_button ident_mobile" onclick="chioseIdent(this)">Номер
+                                телефона</button>
+                            <button class="ident_button ident_nothing" onclick="chioseIdent(this)">Ничего</button>
+                        </div><br>
+                    </div>
+
                     <div class="card_item">
                         Тип обращения
                         <div class="tip_area">
@@ -656,6 +677,10 @@
             })
             type.style.opacity = 1;
             typeSz = type.textContent
+        }
+
+        function chioseIdent(ident) {
+            ident.classList.toggle('ident_button__active')
         }
 
 
