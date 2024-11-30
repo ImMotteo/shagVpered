@@ -367,7 +367,8 @@
         opacity: 1;
     }
 
-    .card_input {
+    .card_input,
+    .ident_area {
         margin-top: 7px;
     }
 
@@ -395,6 +396,10 @@
         border-radius: 7px;
     }
 
+    .required_zone {
+        color: red;
+    }
+
     .buttonPart div {}
 </style>
 
@@ -409,41 +414,45 @@
 
             <hr>
             <div class="card_container">
-                <div class="card_items">
-                    <div class="card_item">
-                        Тема обращения <input class="card_input"
-                            placeholder="Начни вводить или выбери тему из списка"><br>
-                        <div class="input_container themes_container hideThis">
+                <form id="perevod_form">
+                    <div class="card_items">
+                        <div class="card_item">
+                            Тема обращения <input class="card_input"
+                                placeholder="Начни вводить или выбери тему из списка"><br>
+                            <div class="input_container themes_container hideThis">
+                            </div>
                         </div>
-                    </div>
-                    <div class="description">
-                        Кто обслуживает: <span class="zona_otv">МБ</span>
-                    </div>
-                    <div class="card_item">
-                        Направление перевода:
-                        <input class="card_input" placeholder="Начни вводить или выбери направление перевода"
-                            required><br>
-                        <div class="input_container napravlenie_container hideThis">
+                        <div class="description">
+                            Кто обслуживает: <span class="zona_otv">МБ</span>
                         </div>
-                    </div>
-                    <div class="card_item">
-                        <p>Как обращаться к клиенту <input placeholder="Имя, которое назвал клиент" required><br>
-                    </div>
+                        <div class="card_item">
+                            <label>
+                                Направление перевода: <span class="required_zone">*</span>
+                                <input class="card_input" placeholder="Начни вводить или выбери направление перевода"
+                                    required><br>
+                                <div class="input_container napravlenie_container hideThis">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="card_item">
+                            <p>Как обращаться к клиенту</p>
+                            <input class='card_input' placeholder="Имя, которое назвал клиент" required><br>
+                        </div>
 
-                    <div class="card_item">
-                        <p>Что называл клиент?
-                        <div class="ident_area">
-                            <button class="ident_button ident_fio" onclick="chioseIdent(this)">ФИО</button>
-                            <button class="ident_button ident_pasport" onclick="chioseIdent(this)">Паспортные
-                                данные</button>
-                            <button class="ident_button ident_adres" onclick="chioseIdent(this)">Адрес</button>
-                            <button class="ident_button ident_mobile" onclick="chioseIdent(this)">Номер
-                                телефона</button>
-                            <button class="ident_button ident_nothing" onclick="chioseIdent(this)">Ничего</button>
+                        <div class="card_item">
+                            <p>Что называл клиент?
+                            <div class="ident_area">
+                                <button class="ident_button ident_fio" onclick="chioseIdent(this)">ФИО</button>
+                                <button class="ident_button ident_pasport" onclick="chioseIdent(this)">Паспортные
+                                    данные</button>
+                                <button class="ident_button ident_adres" onclick="chioseIdent(this)">Адрес</button>
+                                <button class="ident_button ident_mobile" onclick="chioseIdent(this)">Номер
+                                    телефона</button>
+                                <button class="ident_button ident_nothing" onclick="chioseIdent(this)">Ничего</button>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- <div class="card_item">
+                        <!-- <div class="card_item">
                         Тип обращения
                         <div class="tip_area">
                             <button class="tip_button tip_galoba" onclick="chioseTypeSz(this)">Жалоба</button>
@@ -453,18 +462,18 @@
                         </div>
                     </div> -->
 
-                    <div class="card_item">
-                        Подробнее <br><textarea name="podrobnee" rows="10" cols="15"
-                            placeholder="Подробнее опиши ситуацию, чтобы помочь своему коллеге лучше понять причину обращения"></textarea>
-                    </div>
-
-                    <div class="card_footer">
-                        <button class="button" id="otmena" type="submit">Отмена</button>
-                        <button class="button" id="perevesti" type="submit">Перевести</button>
-                    </div>
+                        <div class="card_item">
+                            Подробнее <br><textarea name="podrobnee" rows="10" cols="15"
+                                placeholder="Подробнее опиши ситуацию, чтобы помочь своему коллеге лучше понять причину обращения"></textarea>
+                        </div>
+                </form>
+                <div class="card_footer">
+                    <button class="button" id="otmena" type="submit">Отмена</button>
+                    <button class="button" id="perevesti" type="submit" for="perevod_form">Перевести</button>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 
@@ -639,6 +648,13 @@
         let inputForms = document.querySelectorAll(".card_input");
         for (var i = 0; i < inputForms.length; i++) {
             inputForms[i].onclick = function () {
+                inputForms.forEach((input) => {
+                    if (input.closest('.card_item').querySelector('.input_container') != null) {
+                        console.log(input.closest('.card_item').querySelector('.input_container'))
+                        input.closest('.card_item').querySelector('.input_container').classList.add('hideThis')
+                    }
+                })
+                console.log(this)
                 this.closest('.card_item').querySelector(".input_container").classList.remove('hideThis')
             };
 
