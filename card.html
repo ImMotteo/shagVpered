@@ -82,6 +82,7 @@
     }
 
     nav ul {
+        font-size: calc(var(--min-font-height) * 1);
         width: 100%;
         display: flex;
         align-items: center;
@@ -300,7 +301,7 @@
         max-height: 20vh;
         box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px 0;
         overflow: auto;
-        z-index: 1000000;
+        z-index: 100000000000000;
         background-color: white;
     }
 
@@ -417,8 +418,9 @@
                 <form id="perevod_form">
                     <div class="card_items">
                         <div class="card_item">
-                            Тема обращения <input class="card_input"
-                                placeholder="Начни вводить или выбери тему из списка"><br>
+                            Тема обращения: <span class="required_zone">*</span>
+                            <input class="card_input" placeholder="Начни вводить или выбери тему из списка"
+                                required><br>
                             <div class="input_container themes_container hideThis">
                             </div>
                         </div>
@@ -436,7 +438,7 @@
                         </div>
                         <div class="card_item">
                             <p>Как обращаться к клиенту</p>
-                            <input class='card_input' placeholder="Имя, которое назвал клиент" required><br>
+                            <input class='card_input' placeholder="Имя, которое назвал клиент"><br>
                         </div>
 
                         <div class="card_item">
@@ -650,18 +652,19 @@
             inputForms[i].onclick = function () {
                 inputForms.forEach((input) => {
                     if (input.closest('.card_item').querySelector('.input_container') != null) {
-                        console.log(input.closest('.card_item').querySelector('.input_container'))
+                        console.log(input.closest('.card_item').querySelector('.input_container'), 1)
                         input.closest('.card_item').querySelector('.input_container').classList.add('hideThis')
                     }
                 })
-                console.log(this)
                 this.closest('.card_item').querySelector(".input_container").classList.remove('hideThis')
             };
 
             inputForms[i].oninput = function () {
                 let inputValue = this.value.toLowerCase()
+
                 this.closest('.card_item').querySelectorAll('.input_container_item').forEach((item) => {
-                    if ((item.textContent).toLowerCase().includes(inputValue) || item.getAttribute('data-tags').toLocaleLowerCase().includes(inputValue)) {
+
+                    if ((item.textContent).toLowerCase().includes(inputValue)) {
                         item.classList.remove('hideThis')
                     } else {
                         item.classList.add('hideThis')
@@ -674,18 +677,23 @@
 
         function inputItemChoise(item) {
             item.closest('.card_item').querySelector(".card_input").value = item.textContent
-            item.closest('.card_item').querySelector(".input_container").classList.add('hideThis')
-            item.closest('.card').querySelector(".zona_otv").innerHTML = item.getAttribute('data-description')
+            item.closest('.input_container').classList.add('hideThis')
+            if (item.closest(".input_container").classList.contains('themes_container')) {
+                item.closest('.card').querySelector(".zona_otv").innerHTML = item.getAttribute('data-description')
+            }
 
             let napravlenieContainer = document.querySelector('.napravlenie_container')
-            let newNapravlenieArray = item.getAttribute('data-napravlenie').split(',')
-            let newNapravlenieList = ''
-            console.log(newNapravlenieArray)
-            newNapravlenieArray.forEach(napravlenie => {
-                newNapravlenieList += `<div class="input_container_item" onclick='inputItemChoise(this)'>${napravlenie}</div>`
-            });
+            if (item.closest(".input_container").classList.contains('themes_container')) {
+                console.log(123)
+                let newNapravlenieArray = item.getAttribute('data-napravlenie').split(',')
+                let newNapravlenieList = ''
+                newNapravlenieArray.forEach(napravlenie => {
+                    newNapravlenieList += `<div class="input_container_item" onclick='inputItemChoise(this)'>${napravlenie}</div>`
+                });
+                document.querySelector('.napravlenie_container').innerHTML = newNapravlenieList;
+            }
 
-            document.querySelector('.napravlenie_container').innerHTML = newNapravlenieList;
+
 
 
         }
