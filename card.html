@@ -317,7 +317,9 @@
     }
 
     .description {
-        font-weight: 600;
+        font-weight: 500;
+        font-size: 14px;
+        color: green;
     }
 
     .card_area textarea {
@@ -369,7 +371,8 @@
     }
 
     .card_input,
-    .ident_area {
+    .ident_area,
+    textarea {
         margin-top: 7px;
     }
 
@@ -400,61 +403,61 @@
     .required_zone {
         color: red;
     }
-
-    .buttonPart div {}
 </style>
 
 <body>
 
-    <div class="card_area hideThis">
+    <div class="card_area first_card__area hideThis">
         <div class="card">
             <div class="card_header">
                 <h3>Перевод вызова</h3>
-                <span class="close_card">X</span>
+                <span class="close_card" onclick='closeCard(this)'>X</span>
             </div>
 
             <hr>
             <div class="card_container">
-                <form id="perevod_form">
-                    <div class="card_items">
-                        <div class="card_item">
-                            Тема обращения: <span class="required_zone">*</span>
-                            <input class="card_input" placeholder="Начни вводить или выбери тему из списка"
-                                required><br>
-                            <div class="input_container themes_container hideThis">
-                            </div>
+                <div class="card_items">
+                    <div class="card_item card_item__theme">
+                        Тема обращения: <span class="required_zone">*</span>
+                        <input class="card_input" placeholder="Начни вводить или выбери тему из списка" required><br>
+                        <div class="input_container themes_container hideThis">
                         </div>
-                        <div class="description">
-                            Кто обслуживает: <span class="zona_otv">МБ</span>
-                        </div>
-                        <div class="card_item">
-                            <label>
-                                Направление перевода: <span class="required_zone">*</span>
-                                <input class="card_input" placeholder="Начни вводить или выбери направление перевода"
-                                    required><br>
-                                <div class="input_container napravlenie_container hideThis">
-                                </div>
-                            </label>
-                        </div>
-                        <div class="card_item">
-                            <p>Как обращаться к клиенту</p>
-                            <input class='card_input' placeholder="Имя, которое назвал клиент"><br>
+                    </div>
+                    <div class="description">
+                        Кто обслуживает: <span class="zona_otv"></span>
+                    </div>
+                    <div class="card_item card_item__napravlenie">
+
+                        Направление перевода: <span class="required_zone">*</span>
+                        <input class="card_input" placeholder="Начни вводить или выбери направление перевода"
+                            required><br>
+                        <div class="input_container napravlenie_container hideThis">
                         </div>
 
-                        <div class="card_item">
-                            <p>Что называл клиент?
-                            <div class="ident_area">
-                                <button class="ident_button ident_fio" onclick="chioseIdent(this)">ФИО</button>
-                                <button class="ident_button ident_pasport" onclick="chioseIdent(this)">Паспортные
-                                    данные</button>
-                                <button class="ident_button ident_adres" onclick="chioseIdent(this)">Адрес</button>
-                                <button class="ident_button ident_mobile" onclick="chioseIdent(this)">Номер
-                                    телефона</button>
-                                <button class="ident_button ident_nothing" onclick="chioseIdent(this)">Ничего</button>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="card_item card_item__name">
+                        <p>Как обращаться к клиенту</p>
+                        <input class='card_input' placeholder="Имя, которое назвал клиент"><br>
+                    </div>
 
-                        <!-- <div class="card_item">
+                    <div class="card_item card_item__ident">
+                        <p>Что называл клиент?
+                        <div class="ident_area">
+                            <button type="button" class="ident_button ident_fio"
+                                onclick="chioseIdent(this)">ФИО</button>
+                            <button type="button" class="ident_button ident_pasport"
+                                onclick="chioseIdent(this)">Паспортные
+                                данные</button>
+                            <button type="button" class="ident_button ident_adres"
+                                onclick="chioseIdent(this)">Адрес</button>
+                            <button type="button" class="ident_button ident_mobile" onclick="chioseIdent(this)">Номер
+                                телефона</button>
+                            <button type="button" class="ident_button ident_nothing"
+                                onclick="chioseIdent(this)">Ничего</button>
+                        </div>
+                    </div>
+
+                    <!-- <div class="card_item">
                         Тип обращения
                         <div class="tip_area">
                             <button class="tip_button tip_galoba" onclick="chioseTypeSz(this)">Жалоба</button>
@@ -464,20 +467,57 @@
                         </div>
                     </div> -->
 
-                        <div class="card_item">
-                            Подробнее <br><textarea name="podrobnee" rows="10" cols="15"
-                                placeholder="Подробнее опиши ситуацию, чтобы помочь своему коллеге лучше понять причину обращения"></textarea>
-                        </div>
-                </form>
-                <div class="card_footer">
-                    <button class="button" id="otmena" type="submit">Отмена</button>
-                    <button class="button" id="perevesti" type="submit" for="perevod_form">Перевести</button>
+                    <div class="card_item card_item__podrobnee">
+                        Подробнее <br><textarea name="podrobnee" rows="10" cols="15"
+                            placeholder="Подробнее опиши ситуацию, чтобы помочь своему коллеге лучше понять причину обращения"></textarea>
+                    </div>
+                    <div class="card_footer">
+                        <button class="button" id="otmena" onclick="closeCard(this)" type="button">Отмена</button>
+                        <button class="button" id="perevesti" type="button">Перевести</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 
+    <div class="card_area second_card__area hideThis">
+        <div class="card">
+            <div class="card_header">
+                <h3>Переведённый вызов</h3>
+                <span class="close_card" onclick='closeCard(this)'>X</span>
+            </div>
+
+            <hr>
+            <div class="card_container">
+                <div class="card_items">
+                    <div class="card_item">
+                        <b>Время, затраченное на перевод:</b> <span class="vremya"></span>
+                    </div>
+
+                    <div class="card_item">
+                        <b>Как обращаться к клиенту:</b> <span class="kak_obrashatsya"></span>
+                    </div>
+
+                    <div class="card_item">
+                        <b>Тема обращения:</b> <span class="tema_obrasheniya"></span>
+                    </div>
+
+                    <div class="card_item">
+                        <b>Что называл клиент:</b> <span class="chto_nazival"></span>
+                    </div>
+
+                    <div class="card_item">
+                        <b>Подробнее:</b> <span class="podrobnee"></span>
+                    </div>
+
+                </div>
+
+                <div class="card_footer">
+                    <button class="button" id="otmena" onclick="closeCard(this)" type="button">Готово</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <div class="header">
@@ -562,9 +602,7 @@
     <script>
         let start;
         let end;
-        let typeSz = '';
-        let theme = '';
-        let descriptionText = ''
+
 
         function hideThis(selector) {
             document.querySelector(selector).classList.add('hideThis')
@@ -575,52 +613,67 @@
         }
 
         document.getElementById('perevod_button').onclick = function () {
-            showThis('.card_area')
+            showThis('.first_card__area')
             start = Date.now();
         }
 
-        document.getElementById('otmena').onclick = function () {
-            hideThis('.card_area')
-            start = 0;
-        }
 
-        document.querySelector('.close_card').onclick = function () {
-            hideThis('.card_area')
+
+        function closeCard(button) {
+            button = button
+            console.log(`.${button.closest('.card_area').classList[1]}`)
+            hideThis(`.${button.closest('.card_area').classList[1]}`)
             start = 0;
         }
 
         document.querySelector('#perevesti').onclick = function () {
+            hideThis('.first_card__area')
+            showThis('.second_card__area')
+            let themeObrash = document.querySelector('.card_item__theme input').value
+            let podrobnee = document.querySelector('.card_item__podrobnee textArea').value
+            let kakObrashatsya = document.querySelector('.card_item__name input').value
+
             end = Date.now();
-            alert(`Время перевода: ${(end - start) / 1000}\n
-            Тема обращения: ${theme}\n
-            Тип обращения: ${typeSz}\n
-            Описание: ${descriptionText}
-            `)
+
+            let identActiveButton = document.querySelectorAll('.ident_button__active')
+
+            let chtoNazival = '';
+            if (identActiveButton.length > 1) {
+                identActiveButton.forEach((button) => {
+                    console.log(button.value)
+                    chtoNazival += `${button.textContent}, `
+                })
+            } else {
+                chtoNazival += identActiveButton[0].textContent
+            }
+
+
+
+
+            document.querySelector('.vremya').innerHTML = `${(end - start) / 1000} сек.`
+            document.querySelector('.tema_obrasheniya').innerHTML = `${themeObrash}`
+            document.querySelector('.podrobnee').innerHTML = `${podrobnee}`
+            document.querySelector('.chto_nazival').innerHTML = `${chtoNazival}`
+            document.querySelector('.kak_obrashatsya').innerHTML = `${kakObrashatsya}`
+
+            // alert(`Время перевода: ${(end - start) / 1000}\n
+            // Тема обращения: ${theme}\n
+            // Тип обращения: ${typeSz}\n
+            // Описание: ${descriptionText}
+            // `)
 
 
         }
 
         let themes = [
-            {
-                name: 'МТС Деньги',
-                description: 'МБ или выделенный сотрудник ФБ',
-                tags: ['Деньги'],
-                napravlenie: ['МБ', 'ФБ']
 
-            },
             {
                 name: 'Диагностика домашних услуг',
                 description: 'ФБ или выделенный сотрудник МБ',
                 tags: ['Диагностика', 'ШПД', 'Домашних услуг', 'Диагностика ТВ', 'ЦТВ', 'IPTV', 'Не работает', 'Не показывает', 'wifi', 'wi-fi', 'вай-фай', 'вайфай'],
                 napravlenie: ['МБ', 'ФБ']
             },
-            {
-                name: 'Кэшбэк',
-                description: 'МБ или выделенный сотрудник ФБ',
-                tags: ['кэшбэк', 'Кешбек', 'кешбэк', 'кэшбек', 'cashback'],
-                napravlenie: ['МБ', 'ФБ']
 
-            },
             {
                 name: 'Подключить тариф МБ+ФБ',
                 description: 'ФБ или выделенный сотрудник МБ',
@@ -633,6 +686,56 @@
                 tags: ['Спутник', 'Спутниковое', 'СТВ'],
                 napravlenie: ['СТВ']
             },
+            {
+                name: 'МТС Деньги',
+                description: 'МБ или выделенный сотрудник ФБ',
+                tags: ['Деньги, карта, пин-код, остаток по кредиту, лимит по карте, банковская карта, мошенничество'],
+                napravlenie: ['МБ', 'ФБ']
+            },
+            {
+                name: 'МТС Cashback',
+                description: 'Цифровые продукты',
+                tags: ['кэшбэк', 'Кешбек', 'кешбэк', 'кэшбек', 'cashback', 'недоволен авторегистрацией', 'жалоба на работу приложения или сайта', 'жалоба на непоступление кешбэка', 'некорректное начисление кешбэка', 'жалоба на вывод кешбэка', 'перенос ошибочного кешбэка', 'возврат кешбэка'],
+                napravlenie: ['Цифровые продукты']
+            },
+            {
+                name: 'МТС Travel',
+                description: 'МТС Travel',
+                tags: ['Бронирования отелей'],
+                napravlenie: ['МТС Travel']
+            },
+            {
+                name: 'Баланс и начисления по мобильному номеру',
+                description: 'МБ',
+                tags: ['Списания', 'почему списаны деньги', 'баланс', 'репрайсинг', 'нет связи', 'пакеты интернета', 'несогласия со списаниями', 'пакет интернета', 'пакет минут'],
+                napravlenie: ['МБ']
+            },
+            {
+                name: 'Блокировка sim',
+                description: 'МБ',
+                tags: ['украли телефон', 'заблокировать', 'блокировка'],
+                napravlenie: ['МБ']
+            },
+            {
+                name: 'МТС домашний (не тарелка)',
+                description: 'ФБ',
+                tags: ['подключить интернет дома', 'подключить роутер', 'не работает домашний интернет', 'подключить телевизор', 'не работает телевизор', 'не показывает тв', 'нет интернета', 'IPTV', 'приставка'],
+                napravlenie: ['ФБ']
+            },
+            {
+                name: 'Требует вышестоящее руководство по мобильной связи',
+                description: 'МБ',
+                tags: ['Жалоба', 'требую старшего', 'перевод на старшего', 'вышестоящее руководство'],
+                napravlenie: ['ФБ']
+            },
+            {
+                name: 'сервису "Membrana"',
+                description: 'выделенная линия',
+                tags: ['мониторинг утечек', 'сториз', 'блокировка СПАМ и мошеннических звонков', 'блокировка рекламы', 'предупреждение о подозрительных сайтах', 'возможность создания виртуальных номеров', 'безопасная сеть', 'чистый интернет', 'функционал управления входящим голосовым трафиком', 'временная почта', 'оплата сервисов'],
+                napravlenie: ['ФБ']
+            },
+
+
         ]
 
         document.addEventListener("DOMContentLoaded", () => {
@@ -652,11 +755,10 @@
             inputForms[i].onclick = function () {
                 inputForms.forEach((input) => {
                     if (input.closest('.card_item').querySelector('.input_container') != null) {
-                        console.log(input.closest('.card_item').querySelector('.input_container'), 1)
                         input.closest('.card_item').querySelector('.input_container').classList.add('hideThis')
                     }
                 })
-                this.closest('.card_item').querySelector(".input_container").classList.remove('hideThis')
+                this.closest('.card_item').querySelector(".input_container").classList.toggle('hideThis')
             };
 
             inputForms[i].oninput = function () {
@@ -680,21 +782,23 @@
             item.closest('.input_container').classList.add('hideThis')
             if (item.closest(".input_container").classList.contains('themes_container')) {
                 item.closest('.card').querySelector(".zona_otv").innerHTML = item.getAttribute('data-description')
+                document.querySelector('.napravlenie_container').closest('.card_item').querySelector('.card_input').value = ''
             }
+
 
             let napravlenieContainer = document.querySelector('.napravlenie_container')
             if (item.closest(".input_container").classList.contains('themes_container')) {
-                console.log(123)
                 let newNapravlenieArray = item.getAttribute('data-napravlenie').split(',')
                 let newNapravlenieList = ''
                 newNapravlenieArray.forEach(napravlenie => {
-                    newNapravlenieList += `<div class="input_container_item" onclick='inputItemChoise(this)'>${napravlenie}</div>`
+                    newNapravlenieList += `<div class="input_container_item" onclick='inputItemChoise(this);'>${napravlenie}</div>`
                 });
+                if (newNapravlenieArray.length == 1) {
+                    console.log(newNapravlenieArray)
+                    document.querySelector('.napravlenie_container').closest('.card_item').querySelector('.card_input').value = newNapravlenieArray
+                }
                 document.querySelector('.napravlenie_container').innerHTML = newNapravlenieList;
             }
-
-
-
 
         }
 
