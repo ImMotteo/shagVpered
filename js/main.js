@@ -50,8 +50,10 @@ const mainSlide = document.querySelector('.main-slide');
 const slidesCount = mainSlide.querySelectorAll('div').length;
 
 let activeSlideIndex = 0;
+let slideHeight = document.querySelector('.slider_container').clientHeight
+console.log(slideHeight)
 
-sideBar.style.top = `-${(slidesCount - 1) * 80}vh`;
+sideBar.style.top = `-${(slidesCount - 1) * slideHeight}px`;
 
 upBtn.addEventListener('click', () => {
     changeSlide('down')
@@ -76,7 +78,7 @@ function changeSlide(direction) {
         }
     }
 
-    const height = container.clientHeight;
+    const height = document.querySelector('.slider_container').clientHeight;
 
     mainSlide.style.transform = `translateY(-${activeSlideIndex * height}px)`;
 
