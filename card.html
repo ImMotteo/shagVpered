@@ -1258,7 +1258,7 @@
 
                 this.closest('.card_item').querySelectorAll('.input_container_item').forEach((item) => {
 
-                    if ((item.textContent).toLowerCase().includes(inputValue) || inputValue.includes(item.getAttribute('data-tags'))) {
+                    if ((item.textContent).toLowerCase().includes(inputValue) || item.getAttribute('data-tags').toLowerCase().includes(inputValue)) {
                         item.classList.remove('hideThis')
                     } else {
                         item.classList.add('hideThis')
